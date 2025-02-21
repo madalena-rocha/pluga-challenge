@@ -1,9 +1,11 @@
+import { Icon } from "../../components/Icon";
+
 import { Container } from "./styles";
 
 export function Card({ icon, name }) {
   return (
     <Container>
-      <img src={icon} alt="" />
+      <Icon icon={icon} />
       <button>{name}</button>
     </Container>
   );

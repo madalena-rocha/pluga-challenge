@@ -11,10 +11,6 @@ export const Container = styled.div`
   max-width: 30rem;
   padding: 3.2rem;
 
-  > img {
-    width: 80%;
-  }
-
   > button {
     width: 100%;
   }
