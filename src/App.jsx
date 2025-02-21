@@ -2,6 +2,7 @@ import { FiSearch } from "react-icons/fi";
 
 import { Input } from "./components/Input";
 import { Card } from "./components/Card";
+import { Button } from "./components/Button";
 
 function App() {
   return (
@@ -12,6 +13,8 @@ function App() {
         icon="https://assets.pluga.co/apps/icons/omie/omie-icon.svg"
         name="Omie"
       ></Card>
+
+      <Button title="Acessar" />
     </>
   );
 }
