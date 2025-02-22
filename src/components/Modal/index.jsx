@@ -6,10 +6,10 @@ import { Card } from "../../components/Card";
 
 import { Container, Tool, Cards } from "./styles";
 
-export function Modal() {
+export function Modal({ setIsMenuOpen }) {
   return (
     <Container>
-      <X size={24} />
+      <X size={24} onClick={() => setIsMenuOpen(false)} />
 
       <Tool>
         <Icon icon="https://assets.pluga.co/apps/icons/omie/omie-icon.svg"></Icon>
