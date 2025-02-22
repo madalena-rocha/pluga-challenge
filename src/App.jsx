@@ -6,6 +6,8 @@ import { Input } from "./components/Input";
 import { Card } from "./components/Card";
 import { Modal } from "./components/Modal";
 
+import { Container, Cards } from "./App.js";
+
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [data, setData] = useState([]);
@@ -33,24 +35,26 @@ function App() {
   }, [search]);
 
   return (
-    <>
+    <Container>
       <Input
         placeholder="Buscar ferramenta"
         icon={FiSearch}
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {data.map((item) => (
-        <Card
-          key={item.app_id}
-          icon={item.icon}
-          name={item.name}
-          setIsModalOpen={setIsModalOpen}
-        />
-      ))}
+      <Cards>
+        {data.map((item) => (
+          <Card
+            key={item.app_id}
+            icon={item.icon}
+            name={item.name}
+            setIsModalOpen={setIsModalOpen}
+          />
+        ))}
+      </Cards>
 
       {isModalOpen && <Modal setIsMenuOpen={setIsModalOpen} />}
-    </>
+    </Container>
   );
 }
 

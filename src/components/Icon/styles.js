@@ -2,4 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 24rem;
+  display: flex;
+  justify-content: center;
 `;

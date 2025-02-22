@@ -19,7 +19,6 @@ export const Container = styled.div`
     position: absolute;
     top: 4.8rem;
     right: 4.8rem;
-
     cursor: pointer;
   }
 
@@ -31,18 +30,19 @@ export const Container = styled.div`
 export const Tool = styled.div`
   width: 70%;
   margin: 0 auto;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   .tool-info {
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
 
     > p {
       text-transform: uppercase;
       text-align: center;
-
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
       padding: 1.6rem;
     }
@@ -51,5 +51,6 @@ export const Tool = styled.div`
 
 export const Cards = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.6rem;
 `;
