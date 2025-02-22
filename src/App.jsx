@@ -9,17 +9,36 @@ import { Modal } from "./components/Modal";
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("https://pluga.co/ferramentas_search.json")
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error("Erro ao buscar dados:", error));
-  }, []);
+    async function fetchData() {
+      try {
+        const response = await fetch(
+          "https://pluga.co/ferramentas_search.json"
+        );
+        const json = await response.json();
+
+        const filteredData = json.filter((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase())
+        );
+
+        setData(filteredData);
+      } catch (error) {
+        console.error("Erro ao buscar os dados:", error);
+      }
+    }
+
+    fetchData();
+  }, [search]);
 
   return (
     <>
-      <Input placeholder="Buscar ferramenta" icon={FiSearch} />
+      <Input
+        placeholder="Buscar ferramenta"
+        icon={FiSearch}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
       {data.map((item) => (
         <Card
