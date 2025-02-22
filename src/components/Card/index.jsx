@@ -1,5 +1,5 @@
 import { Icon } from "../../components/Icon";
-import { ButtonText } from "../../components/ButtonText";
+import { Button } from "../../components/Button";
 
 import { Container } from "./styles";
 
@@ -7,7 +7,7 @@ export function Card({ icon, name, setIsModalOpen }) {
   return (
     <Container>
       <Icon icon={icon} />
-      <ButtonText name={name} setIsModalOpen={setIsModalOpen} />
+      <Button name={name} setIsModalOpen={setIsModalOpen} />
     </Container>
   );
 }

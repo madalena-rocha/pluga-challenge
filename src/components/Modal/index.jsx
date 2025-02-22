@@ -1,7 +1,7 @@
 import { X } from "@phosphor-icons/react";
 
 import { Icon } from "../../components/Icon";
-import { Button } from "../../components/Button";
+import { Link } from "../../components/Link";
 import { Card } from "../../components/Card";
 
 import { Container, Tool, Cards } from "./styles";
@@ -17,7 +17,7 @@ export function Modal({ setIsMenuOpen }) {
         <div className="tool-info">
           <p>Omie</p>
 
-          <Button title="Acessar" />
+          <Link href="https://pluga.co/ferramentas/omie/" title="Acessar" />
         </div>
       </Tool>
 
