@@ -3,11 +3,13 @@ import { Button } from "../../components/Button";
 
 import { Container } from "./styles";
 
-export function Card({ icon, name, setIsModalOpen }) {
+export function Card({ tool, openModal }) {
+  if (!tool) return null;
+
   return (
     <Container>
-      <Icon icon={icon} />
-      <Button name={name} setIsModalOpen={setIsModalOpen} />
+      <Icon icon={tool.icon} />
+      <Button name={tool.name} onClick={() => openModal(tool.app_id)} />
     </Container>
   );
 }

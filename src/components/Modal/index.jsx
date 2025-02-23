@@ -6,18 +6,18 @@ import { Card } from "../../components/Card";
 
 import { Container, Tool, Cards } from "./styles";
 
-export function Modal({ setIsMenuOpen }) {
+export function Modal({ tool, onClose }) {
   return (
     <Container>
-      <X size={24} onClick={() => setIsMenuOpen(false)} />
+      <X size={24} onClick={onClose} />
 
       <Tool>
-        <Icon icon="https://assets.pluga.co/apps/icons/omie/omie-icon.svg"></Icon>
+        <Icon icon={tool.icon}></Icon>
 
         <div className="tool-info">
-          <p>Omie</p>
+          <p>{tool.name}</p>
 
-          <Link href="https://pluga.co/ferramentas/omie/" title="Acessar" />
+          <Link href={tool.link} title="Acessar" />
         </div>
       </Tool>
 
@@ -25,19 +25,23 @@ export function Modal({ setIsMenuOpen }) {
 
       <Cards>
         <Card
-          icon="https://assets.pluga.co/apps/icons/omie/omie-icon.svg"
-          name="Omie"
-        ></Card>
-
+          tool={{
+            icon: "https://assets.pluga.co/apps/icons/omie/omie-icon.svg",
+            name: "Omie",
+          }}
+        />
         <Card
-          icon="https://assets.pluga.co/apps/icons/omie/omie-icon.svg"
-          name="Omie"
-        ></Card>
-
+          tool={{
+            icon: "https://assets.pluga.co/apps/icons/omie/omie-icon.svg",
+            name: "Omie",
+          }}
+        />
         <Card
-          icon="https://assets.pluga.co/apps/icons/omie/omie-icon.svg"
-          name="Omie"
-        ></Card>
+          tool={{
+            icon: "https://assets.pluga.co/apps/icons/omie/omie-icon.svg",
+            name: "Omie",
+          }}
+        />
       </Cards>
     </Container>
   );

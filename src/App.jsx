@@ -10,28 +10,39 @@ import { Container, Cards } from "./App.js";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [data, setData] = useState([]);
+  const [selectedTool, setSelectedTool] = useState(null);
+
+  const [toolsData, setToolsData] = useState([]);
   const [search, setSearch] = useState("");
 
+  function openModal(toolId) {
+    setIsModalOpen(true);
+    setSelectedTool(toolId);
+  }
+
+  const closeModal = () => {
+    setSelectedTool(null);
+  };
+
   useEffect(() => {
-    async function fetchData() {
+    async function fetchToolsData() {
       try {
         const response = await fetch(
           "https://pluga.co/ferramentas_search.json"
         );
         const json = await response.json();
 
-        const filteredData = json.filter((item) =>
+        const filteredToolsData = json.filter((item) =>
           item.name.toLowerCase().includes(search.toLowerCase())
         );
 
-        setData(filteredData);
+        setToolsData(filteredToolsData);
       } catch (error) {
         console.error("Erro ao buscar os dados:", error);
       }
     }
 
-    fetchData();
+    fetchToolsData();
   }, [search]);
 
   return (
@@ -43,17 +54,17 @@ function App() {
       />
 
       <Cards>
-        {data.map((item) => (
-          <Card
-            key={item.app_id}
-            icon={item.icon}
-            name={item.name}
-            setIsModalOpen={setIsModalOpen}
-          />
+        {toolsData.map((tool) => (
+          <Card key={tool.app_id} tool={tool} openModal={openModal} />
         ))}
       </Cards>
 
-      {isModalOpen && <Modal setIsMenuOpen={setIsModalOpen} />}
+      {isModalOpen && selectedTool && (
+        <Modal
+          tool={toolsData.find((t) => t.app_id === selectedTool)}
+          onClose={closeModal}
+        />
+      )}
     </Container>
   );
 }
