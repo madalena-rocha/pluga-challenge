@@ -1,14 +1,9 @@
 import { Container } from "./styles";
 
-export function Button({ name, loading = false, setIsModalOpen, ...rest }) {
+export function Button({ name, children, loading = false, onClick, ...rest }) {
   return (
-    <Container
-      type="button"
-      disabled={loading}
-      onClick={() => setIsModalOpen(true)}
-      {...rest}
-    >
-      {loading ? "Carregando..." : name}
+    <Container type="button" disabled={loading} onClick={onClick} {...rest}>
+      {loading ? "Carregando..." : name || children}
     </Container>
   );
 }

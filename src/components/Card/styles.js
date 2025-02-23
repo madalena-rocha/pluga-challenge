@@ -15,4 +15,8 @@ export const Container = styled.div`
   img {
     width: 80%;
   }
+
+  button {
+    width: 100%;
+  }
 `;

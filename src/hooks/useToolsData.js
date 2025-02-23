@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
-export function useToolsData(search) {
+export function useToolsData() {
   const [toolsData, setToolsData] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function fetchToolsData() {
@@ -10,9 +11,11 @@ export function useToolsData(search) {
           "https://pluga.co/ferramentas_search.json"
         );
         const json = await response.json();
+
         const filteredToolsData = json.filter((item) =>
           item.name.toLowerCase().includes(search.toLowerCase())
         );
+
         setToolsData(filteredToolsData);
       } catch (error) {
         console.error("Erro ao buscar os dados:", error);
@@ -22,5 +25,5 @@ export function useToolsData(search) {
     fetchToolsData();
   }, [search]);
 
-  return toolsData;
+  return { toolsData, setSearch };
 }
