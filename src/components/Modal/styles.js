@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 80%;
+  max-width: 1152px;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 3.2rem;
 
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
   border-radius: 12px;
-  padding: 4.8rem;
+  padding: 3.2rem;
 
   position: fixed;
   top: 50%;
@@ -17,33 +18,39 @@ export const Container = styled.div`
 
   > svg {
     position: absolute;
-    top: 4.8rem;
-    right: 4.8rem;
+    top: 3.2rem;
+    right: 3.2rem;
     cursor: pointer;
   }
 
   > h2 {
     text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 500;
   }
 `;
 
 export const Tool = styled.div`
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
+
+  > div:nth-child(1) {
+    width: 24rem;
+  }
 
   .tool-info {
     width: 40%;
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 2.4rem;
 
     > span {
       text-transform: uppercase;
       text-align: center;
-      background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+      background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
       padding: 1.6rem;
     }
   }
@@ -52,5 +59,14 @@ export const Tool = styled.div`
 export const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 1.6rem;
+  gap: 3.2rem;
+
+  > div {
+    background-color: transparent;
+  }
+
+  button {
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+  }
 `;
