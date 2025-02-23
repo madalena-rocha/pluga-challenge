@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { FiSearch } from "react-icons/fi";
+
+import { useToolsData } from "./hooks/useToolsData";
 
 import { Input } from "./components/Input";
 import { Card } from "./components/Card";
@@ -12,8 +14,8 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTool, setSelectedTool] = useState(null);
 
-  const [toolsData, setToolsData] = useState([]);
   const [search, setSearch] = useState("");
+  const toolsData = useToolsData(search);
 
   const [recentlyViewed, setRecentlyViewed] = useState([]);
 
@@ -38,27 +40,6 @@ function App() {
     setSelectedTool(null);
     setIsModalOpen(false);
   };
-
-  useEffect(() => {
-    async function fetchToolsData() {
-      try {
-        const response = await fetch(
-          "https://pluga.co/ferramentas_search.json"
-        );
-        const json = await response.json();
-
-        const filteredToolsData = json.filter((item) =>
-          item.name.toLowerCase().includes(search.toLowerCase())
-        );
-
-        setToolsData(filteredToolsData);
-      } catch (error) {
-        console.error("Erro ao buscar os dados:", error);
-      }
-    }
-
-    fetchToolsData();
-  }, [search]);
 
   return (
     <Container>

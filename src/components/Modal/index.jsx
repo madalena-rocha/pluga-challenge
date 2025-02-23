@@ -14,7 +14,7 @@ export function Modal({ tool, recentlyViewed, onClose }) {
       <X size={24} onClick={onClose} />
 
       <Tool>
-        <Icon icon={tool.icon}></Icon>
+        <Icon icon={tool.icon} name={tool.name}></Icon>
 
         <div className="tool-info">
           <p>{tool.name}</p>
