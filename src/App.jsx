@@ -15,13 +15,28 @@ function App() {
   const [toolsData, setToolsData] = useState([]);
   const [search, setSearch] = useState("");
 
+  const [recentlyViewed, setRecentlyViewed] = useState([]);
+
   function openModal(toolId) {
+    const selected = toolsData.find((tool) => tool.app_id === toolId);
+    if (!selected) return;
+
+    setSelectedTool(selected);
     setIsModalOpen(true);
-    setSelectedTool(toolId);
+
+    setRecentlyViewed((prev) => {
+      const updatedHistory = [
+        selected,
+        ...prev.filter((t) => t.app_id !== toolId),
+      ];
+
+      return updatedHistory.slice(0, 3);
+    });
   }
 
   const closeModal = () => {
     setSelectedTool(null);
+    setIsModalOpen(false);
   };
 
   useEffect(() => {
@@ -59,9 +74,10 @@ function App() {
         ))}
       </Cards>
 
-      {isModalOpen && selectedTool && (
+      {isModalOpen && (
         <Modal
-          tool={toolsData.find((t) => t.app_id === selectedTool)}
+          tool={selectedTool}
+          recentlyViewed={recentlyViewed}
           onClose={closeModal}
         />
       )}

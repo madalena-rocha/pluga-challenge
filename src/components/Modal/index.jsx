@@ -6,7 +6,9 @@ import { Card } from "../../components/Card";
 
 import { Container, Tool, Cards } from "./styles";
 
-export function Modal({ tool, onClose }) {
+export function Modal({ tool, recentlyViewed, onClose }) {
+  if (!tool) return null;
+
   return (
     <Container>
       <X size={24} onClick={onClose} />
@@ -23,26 +25,17 @@ export function Modal({ tool, onClose }) {
 
       <h2>Últimas ferramentas visualizadas</h2>
 
-      <Cards>
-        <Card
-          tool={{
-            icon: "https://assets.pluga.co/apps/icons/omie/omie-icon.svg",
-            name: "Omie",
-          }}
-        />
-        <Card
-          tool={{
-            icon: "https://assets.pluga.co/apps/icons/omie/omie-icon.svg",
-            name: "Omie",
-          }}
-        />
-        <Card
-          tool={{
-            icon: "https://assets.pluga.co/apps/icons/omie/omie-icon.svg",
-            name: "Omie",
-          }}
-        />
-      </Cards>
+      {recentlyViewed.length > 0 && (
+        <Cards>
+          {recentlyViewed.map((recentTool) => (
+            <Card
+              key={recentTool.app_id}
+              tool={recentTool}
+              openModal={() => {}}
+            />
+          ))}
+        </Cards>
+      )}
     </Container>
   );
 }
