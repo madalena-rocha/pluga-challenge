@@ -40,7 +40,7 @@ export const Tool = styled.div`
     flex-direction: column;
     gap: 1.6rem;
 
-    > p {
+    > span {
       text-transform: uppercase;
       text-align: center;
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};

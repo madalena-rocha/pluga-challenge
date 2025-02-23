@@ -17,7 +17,7 @@ export function Modal({ tool, recentlyViewed, onClose }) {
         <Icon icon={tool.icon} name={tool.name}></Icon>
 
         <div className="tool-info">
-          <p>{tool.name}</p>
+          <span>{tool.name}</span>
 
           <Link href={tool.link} title="Acessar" />
         </div>

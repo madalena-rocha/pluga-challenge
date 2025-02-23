@@ -51,14 +51,16 @@ function App() {
 
   return (
     <Container>
-      <Input
-        placeholder="Buscar ferramenta"
-        icon={FiSearch}
-        onChange={(e) => {
-          setSearch(e.target.value);
-          setCurrentPage(1);
-        }}
-      />
+      <header>
+        <Input
+          placeholder="Buscar ferramenta"
+          icon={FiSearch}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setCurrentPage(1);
+          }}
+        />
+      </header>
 
       <Cards>
         {currentTools.map((tool) => (

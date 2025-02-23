@@ -9,8 +9,9 @@ export const Container = styled.div`
   color: ${({ theme }) => theme.COLORS.GRAY_200};
   border-radius: 1rem;
 
+  padding: 1.6rem;
+
   > input {
-    height: 5.6rem;
     width: 100%;
     padding: 1.6rem;
 
@@ -22,9 +23,5 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.COLORS.GRAY_200};
       text-transform: uppercase;
     }
-  }
-
-  > svg {
-    margin-left: 1.6rem;
   }
 `;

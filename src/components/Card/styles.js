@@ -9,7 +9,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
   border-radius: 12px;
 
-  max-width: 30rem;
+  max-width: 26.4rem;
   padding: 3.2rem;
 
   img {
