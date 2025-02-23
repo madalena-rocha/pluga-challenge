@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FiSearch, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 import { useToolsData } from "./hooks/useToolsData";
+import { usePagination } from "./hooks/usePagination";
 
 import { Input } from "./components/Input";
 import { Card } from "./components/Card";
@@ -18,8 +19,12 @@ function App() {
   const [selectedTool, setSelectedTool] = useState(null);
   const [recentlyViewed, setRecentlyViewed] = useState([]);
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const {
+    currentItems: currentTools,
+    totalPages,
+    currentPage,
+    setCurrentPage,
+  } = usePagination(toolsData, 12);
 
   function openModal(toolId) {
     const selected = toolsData.find((tool) => tool.app_id === toolId);
@@ -42,12 +47,6 @@ function App() {
     setSelectedTool(null);
     setIsModalOpen(false);
   };
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentTools = toolsData.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(toolsData.length / itemsPerPage);
 
   return (
     <Container>
