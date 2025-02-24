@@ -13,6 +13,9 @@ export const Overlay = styled.div`
 export const Container = styled.div`
   width: 80%;
   max-width: 1152px;
+  max-height: 90vh;
+  overflow-y: auto;
+
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
@@ -48,6 +51,8 @@ export const Tool = styled.div`
   align-items: center;
   justify-content: space-evenly;
 
+  margin-top: 2.4rem;
+
   > div:nth-child(1) {
     width: 24rem;
   }
@@ -65,12 +70,22 @@ export const Tool = styled.div`
       padding: 1.6rem;
     }
   }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 2.4rem;
+
+    .tool-info {
+      width: 100%;
+    }
+  }
 `;
 
 export const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 3.2rem;
+  justify-content: center;
 
   > div {
     background-color: transparent;

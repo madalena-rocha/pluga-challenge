@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 20rem;
   display: flex;
   justify-content: center;
+
+  > img {
+    max-width: 20rem;
+  }
 `;
