@@ -36,6 +36,13 @@ export const Cards = styled.main`
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
     border-radius: 0.8rem;
   }
+
+  > p {
+    align-self: center;
+
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
 `;
 
 export const Pagination = styled.footer`

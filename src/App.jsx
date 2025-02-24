@@ -64,26 +64,28 @@ function App() {
       </Search>
 
       <Cards>
-        {currentTools.map((tool) => (
-          <Card key={tool.app_id} tool={tool} openModal={openModal} />
-        ))}
+        {currentTools.length > 0 ? (
+          currentTools.map((tool) => (
+            <Card key={tool.app_id} tool={tool} openModal={openModal} />
+          ))
+        ) : (
+          <p>Nenhuma ferramenta encontrada.</p>
+        )}
       </Cards>
 
-      {totalPages > 1 && (
-        <Pagination>
-          <Button onClick={goToPreviousPage} disabled={currentPage === 1}>
-            <FiChevronLeft size={20} />
-          </Button>
+      <Pagination>
+        <Button onClick={goToPreviousPage} disabled={currentPage === 1}>
+          <FiChevronLeft size={20} />
+        </Button>
 
-          <span>
-            Página {currentPage} de {totalPages}
-          </span>
+        <span>
+          Página {currentPage} de {totalPages}
+        </span>
 
-          <Button onClick={goToNextPage} disabled={currentPage === totalPages}>
-            <FiChevronRight size={20} />
-          </Button>
-        </Pagination>
-      )}
+        <Button onClick={goToNextPage} disabled={currentPage === totalPages}>
+          <FiChevronRight size={20} />
+        </Button>
+      </Pagination>
 
       {isModalOpen && (
         <Modal
