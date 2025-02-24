@@ -7,5 +7,20 @@ export function usePagination(data, itemsPerPage) {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
-  return { currentItems, totalPages, currentPage, setCurrentPage };
+  function goToPreviousPage() {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  }
+
+  function goToNextPage() {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  }
+
+  return {
+    currentItems,
+    totalPages,
+    currentPage,
+    setCurrentPage,
+    goToPreviousPage,
+    goToNextPage,
+  };
 }

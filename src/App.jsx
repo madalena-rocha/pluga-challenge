@@ -10,7 +10,7 @@ import { Card } from "./components/Card";
 import { Button } from "./components/Button";
 import { Modal } from "./components/Modal";
 
-import { Container, Cards, Pagination } from "./App.js";
+import { Container, Search, Cards, Pagination } from "./App.js";
 
 function App() {
   const { toolsData, setSearch } = useToolsData();
@@ -24,6 +24,8 @@ function App() {
     totalPages,
     currentPage,
     setCurrentPage,
+    goToPreviousPage,
+    goToNextPage,
   } = usePagination(toolsData, 12);
 
   function openModal(toolId) {
@@ -50,7 +52,7 @@ function App() {
 
   return (
     <Container>
-      <header>
+      <Search>
         <Input
           placeholder="Buscar ferramenta"
           icon={FiSearch}
@@ -59,7 +61,7 @@ function App() {
             setCurrentPage(1);
           }}
         />
-      </header>
+      </Search>
 
       <Cards>
         {currentTools.map((tool) => (
@@ -69,10 +71,7 @@ function App() {
 
       {totalPages > 1 && (
         <Pagination>
-          <Button
-            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-            disabled={currentPage === 1}
-          >
+          <Button onClick={goToPreviousPage} disabled={currentPage === 1}>
             <FiChevronLeft size={20} />
           </Button>
 
@@ -80,12 +79,7 @@ function App() {
             Página {currentPage} de {totalPages}
           </span>
 
-          <Button
-            onClick={() =>
-              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-            }
-            disabled={currentPage === totalPages}
-          >
+          <Button onClick={goToNextPage} disabled={currentPage === totalPages}>
             <FiChevronRight size={20} />
           </Button>
         </Pagination>

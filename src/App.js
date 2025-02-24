@@ -9,10 +9,10 @@ export const Container = styled.div`
   gap: 3.2rem;
 
   padding: 3.2rem;
+`;
 
-  > header {
-    grid-area: header;
-  }
+export const Search = styled.header`
+  grid-area: header;
 `;
 
 export const Cards = styled.main`

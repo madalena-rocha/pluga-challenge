@@ -42,11 +42,7 @@ export function Modal({ tool, recentlyViewed, onClose }) {
         {recentlyViewed.length > 0 && (
           <Cards>
             {recentlyViewed.map((recentTool) => (
-              <Card
-                key={recentTool.app_id}
-                tool={recentTool}
-                openModal={() => {}}
-              />
+              <Card key={recentTool.app_id} tool={recentTool} />
             ))}
           </Cards>
         )}

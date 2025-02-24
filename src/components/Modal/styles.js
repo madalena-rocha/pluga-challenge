@@ -79,5 +79,7 @@ export const Cards = styled.div`
   button {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     color: ${({ theme }) => theme.COLORS.WHITE};
+
+    pointer-events: none;
   }
 `;
