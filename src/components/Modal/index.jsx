@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { X } from "@phosphor-icons/react";
+import { FiX } from "react-icons/fi";
 
 import { Icon } from "../../components/Icon";
 import { Link } from "../../components/Link";
@@ -25,7 +25,7 @@ export function Modal({ tool, recentlyViewed, onClose }) {
       <Overlay onClick={onClose} />
 
       <Container>
-        <X size={24} onClick={onClose} />
+        <FiX size={24} onClick={onClose} />
 
         <Tool>
           <Icon icon={tool.icon} name={tool.name}></Icon>
